@@ -5,7 +5,7 @@ import { SettingsContext } from "utils/contexts/settings";
 import ResolvedIcon from "components/resolvedicon";
 
 export default function Item({ favicon }) {
-  //const description = favicon.description ?? new URL(favicon.href).hostname;
+  // const description = favicon.description ?? new URL(favicon.href).hostname;
   const { settings } = useContext(SettingsContext);
 
   return (

@@ -3,7 +3,7 @@
 
 import Item from "components/favicons/item";
 
-export default function List({ favicons, layout }) {
+export default function List({ favicons }) {
   return (
     <ul
       className="favicon-list"
