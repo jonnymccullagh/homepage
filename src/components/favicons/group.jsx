@@ -9,8 +9,6 @@ import ResolvedIcon from "components/resolvedicon";
 
 export default function FaviconsGroup({ favicons, layout, disableCollapse, groupsInitiallyCollapsed }) {
   const panel = useRef();
-  console.log('+++++')
-  console.log(favicons)
   useEffect(() => {
     if (layout?.initiallyCollapsed ?? groupsInitiallyCollapsed) panel.current.style.height = `0`;
   }, [layout, groupsInitiallyCollapsed]);

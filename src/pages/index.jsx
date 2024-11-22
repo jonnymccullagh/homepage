@@ -271,9 +271,6 @@ function Home({ initialSettings }) {
     const serviceGroups = services?.filter(tabGroupFilter).filter(undefinedGroupFilter);
     const bookmarkGroups = bookmarks.filter(tabGroupFilter).filter(undefinedGroupFilter);
     const faviconGroups = favicons.filter(tabGroupFilter).filter(undefinedGroupFilter);
-    console.log(bookmarkGroups)
-    console.log('------')
-    console.log(faviconGroups)
     return (
       <>
         {tabs.length > 0 && (

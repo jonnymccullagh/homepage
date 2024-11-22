@@ -1,6 +1,5 @@
-import classNames from "classnames";
-
-import { columnMap } from "../../utils/layout/columns";
+// import classNames from "classnames";
+// import { columnMap } from "../../utils/layout/columns";
 
 import Item from "components/favicons/item";
 

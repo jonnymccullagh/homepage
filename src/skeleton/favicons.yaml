@@ -1,12 +1,17 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/favicons
-- Developer:
-  - Github:
-    - abbr: GH
-      name: Github
-      icon: github.png
-      href: https://github.com
+- Monitoring:
+  - Nagios:
+    - abbr: NA
+      name: Nagios
+      icon: nagios.png
+      href: https://nagios.redbranch.net
+  - Nagios:
+    - abbr: NG
+      name: Nagios
+      icon: nagios.png
+      href: https://nagios.knock-darragh.net
   - Gitlab:
     - abbr: GL
       name: Gitlab
