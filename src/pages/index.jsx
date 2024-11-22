@@ -182,9 +182,9 @@ function Home({ initialSettings }) {
     setSettings(initialSettings);
   }, [initialSettings, setSettings]);
 
+  const { data: favicons } = useSWR("/api/favicons");
   const { data: services } = useSWR("/api/services");
   const { data: bookmarks } = useSWR("/api/bookmarks");
-  const { data: favicons } = useSWR("/api/favicons");
   const { data: widgets } = useSWR("/api/widgets");
 
   const servicesAndBookmarks = [
@@ -298,6 +298,14 @@ function Home({ initialSettings }) {
           <div key="layoutGroups" id="layout-groups" className="flex flex-wrap m-4 sm:m-8 sm:mt-4 items-start mb-2">
             {layoutGroups.map((group) =>
               group.services ? (
+                <>
+                <FaviconsGroup
+                  key={group.name}
+                  bookmarks={group}
+                  layout={settings.layout?.[group.name]}
+                  disableCollapse={settings.disableCollapse}
+                  groupsInitiallyCollapsed={settings.groupsInitiallyCollapsed}
+                />
                 <ServicesGroup
                   key={group.name}
                   group={group.name}
@@ -308,6 +316,7 @@ function Home({ initialSettings }) {
                   useEqualHeights={settings.useEqualHeights}
                   groupsInitiallyCollapsed={settings.groupsInitiallyCollapsed}
                 />
+                </>
               ) : (
                 <>
                 <BookmarksGroup
@@ -327,6 +336,19 @@ function Home({ initialSettings }) {
                 </>
               ),
             )}
+          </div>
+        )}
+         {faviconGroups?.length > 0 && (
+          <div key="favicons" id="favicons" className="flex flex-wrap m-4 sm:m-8 sm:mt-4 items-start mb-2">
+            {faviconGroups.map((group) => (
+              <FaviconsGroup
+                key={group.name}
+                favicons={group}
+                layout={settings.layout?.[group.name]}
+                disableCollapse={settings.disableCollapse}
+                groupsInitiallyCollapsed={settings.groupsInitiallyCollapsed}
+              />
+            ))}
           </div>
         )}
         {serviceGroups?.length > 0 && (
@@ -357,19 +379,7 @@ function Home({ initialSettings }) {
             ))}
           </div>
         )}
-        {faviconGroups?.length > 0 && (
-          <div key="favicons" id="favicons" className="flex flex-wrap m-4 sm:m-8 sm:mt-4 items-start mb-2">
-            {faviconGroups.map((group) => (
-              <FaviconsGroup
-                key={group.name}
-                favicons={group}
-                layout={settings.layout?.[group.name]}
-                disableCollapse={settings.disableCollapse}
-                groupsInitiallyCollapsed={settings.groupsInitiallyCollapsed}
-              />
-            ))}
-          </div>
-        )}
+       
       </>
     );
   }, [
